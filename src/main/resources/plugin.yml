@@ -1,0 +1,7 @@
+name: IronGolemManager
+version: '1.0-SNAPSHOT'
+main: net.astradal.ironGolemManager.IronGolemManager
+api-version: '1.21'
+authors: [ Disease, Pookachu ]
+description: A plugin to disable natural iron golem spawns
+website: https://www.astradal.net
