@@ -16,12 +16,22 @@ public final class IronGolemManager extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         getLogger().info("IronGolemManager has been disabled!");
-
     }
+
     @EventHandler
     public void onCreatureSpawn(CreatureSpawnEvent event) {
         if (event.getEntityType() == org.bukkit.entity.EntityType.IRON_GOLEM) {
-            event.setCancelled(true);
+            switch (event.getSpawnReason()) {
+                case VILLAGE_DEFENSE:
+                case VILLAGE_INVASION:
+                    // disable natural spawns
+                    event.setCancelled(true);
+                    getLogger().info("Blocked natural iron golem spawn.");
+                    break;
+                default:
+                    // Allow artificial spawns
+                    break;
+            }
         }
     }
 }
